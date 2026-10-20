@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="1Software — event-driven .NET and developer tooling">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f1f"/>
+      <stop offset="0.6" stop-color="#111a35"/>
+      <stop offset="1" stop-color="#1d1240"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7c3aed" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <style>
+      .title { font: 800 76px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -2px; }
+      .tag   { font: 400 22px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #c7d2fe; }
+      .mono  { font: 600 13px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #e0e7ff; }
+      .small { font: 500 14px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #94a3b8; }
+      .flow  { fill: none; stroke: url(#accent); stroke-width: 2; stroke-dasharray: 6 10; animation: dash 1.6s linear infinite; }
+      .node  { fill: #0f172a; stroke: #334155; stroke-width: 1.5; }
+      .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .p2 { animation-delay: .6s } .p3 { animation-delay: 1.2s } .p4 { animation-delay: 1.8s }
+      @keyframes dash  { to { stroke-dashoffset: -32; } }
+      @keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="320" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="16" fill="url(#grid)"/>
+  <circle cx="900" cy="160" r="260" fill="url(#glow)"/>
+
+  <!-- wordmark -->
+  <text x="64" y="150" class="title"><tspan fill="url(#accent)">1</tspan><tspan fill="#f8fafc">Software</tspan></text>
+  <text x="68" y="196" class="tag">Event-driven .NET · developer tooling</text>
+  <text x="68" y="252" class="small">$ dotnet add package 1nception</text>
+  <rect x="322" y="238" width="10" height="18" fill="#5eead4" class="pulse"/>
+
+  <!-- event flow: command -> aggregate -> event -> projection -->
+  <path class="flow" d="M700 100 C760 100 760 160 820 160"/>
+  <path class="flow" d="M940 160 C1000 160 1000 100 1060 100"/>
+  <path class="flow" d="M940 160 C1000 160 1000 230 1060 230"/>
+  <path class="flow" d="M700 230 C760 230 760 160 820 160"/>
+
+  <g>
+    <rect class="node" x="600" y="80" width="100" height="40" rx="10"/>
+    <circle cx="616" cy="100" r="4" fill="#5eead4" class="pulse"/>
+    <text x="628" y="105" class="mono">Command</text>
+
+    <rect class="node" x="600" y="210" width="100" height="40" rx="10"/>
+    <circle cx="616" cy="230" r="4" fill="#5eead4" class="pulse p3"/>
+    <text x="628" y="235" class="mono">Trigger</text>
+
+    <rect x="820" y="136" width="120" height="48" rx="12" fill="#1e1b4b" stroke="url(#accent)" stroke-width="2"/>
+    <text x="838" y="165" class="mono" style="font-size:14px">Aggregate</text>
+
+    <rect class="node" x="1060" y="80" width="116" height="40" rx="10"/>
+    <circle cx="1076" cy="100" r="4" fill="#a78bfa" class="pulse p2"/>
+    <text x="1088" y="105" class="mono">Event</text>
+
+    <rect class="node" x="1060" y="210" width="116" height="40" rx="10"/>
+    <circle cx="1076" cy="230" r="4" fill="#a78bfa" class="pulse p4"/>
+    <text x="1088" y="235" class="mono">Projection</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120" viewBox="0 0 1200 120" role="img" aria-label="Built in the open by 1Software">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .w1 { animation: drift 9s ease-in-out infinite alternate; }
+      .w2 { animation: drift 7s ease-in-out infinite alternate-reverse; }
+      .t  { font: 600 18px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #f8fafc; }
+      @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+      @media (prefers-reduced-motion: reduce) { .w1, .w2 { animation: none; } }
+    </style>
+    <clipPath id="clip"><rect width="1200" height="120" rx="16"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="120" fill="#0a0f1f"/>
+    <path class="w1" fill="url(#accent)" fill-opacity=".18" d="M0 70 Q150 30 300 70 T600 70 T900 70 T1200 70 T1500 70 V120 H0 Z"/>
+    <path class="w2" fill="url(#accent)" fill-opacity=".30" d="M0 90 Q150 60 300 90 T600 90 T900 90 T1200 90 T1500 90 V120 H0 Z"/>
+    <text x="600" y="52" text-anchor="middle" class="t">Built in the open · <tspan fill="url(#accent)">1</tspan>Software</text>
+  </g>
+</svg>

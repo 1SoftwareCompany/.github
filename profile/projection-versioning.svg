@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-label="Self-versioning projections: a changed projection is rebuilt from the event store in the background while the live version keeps serving reads, then it goes live">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f1f"/>
+      <stop offset="1" stop-color="#1a1238"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .t    { font: 700 24px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #f8fafc; }
+      .s    { font: 400 15px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #94a3b8; }
+      .n    { font: 700 15px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #f8fafc; }
+      .code { font: 500 13px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #c7d2fe; }
+      .add  { fill: #5eead4; }
+      .dim  { fill: #64748b; }
+      .lb   { font: 600 11px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #94a3b8; letter-spacing: 1px; }
+      .chip { font: 600 11px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #e0e7ff; }
+      .badge { font: 700 11px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; letter-spacing: 1px; }
+      .box  { fill: #111a33; stroke: #2a3558; stroke-width: 2; }
+      .flow { fill: none; stroke: url(#accent); stroke-width: 2; stroke-dasharray: 5 8; animation: dash 1.2s linear infinite; }
+      .read { fill: none; stroke: #5eead4; stroke-width: 2; stroke-dasharray: 5 8; animation: dash 1.2s linear infinite; }
+
+      .prog   { transform-box: fill-box; transform-origin: left center; animation: prog 9s ease-in-out infinite; }
+      .feed   { animation: feed 9s infinite; }
+      .before { animation: before 9s infinite; }
+      .after  { animation: after 9s infinite; }
+      .v2box  { animation: v2box 9s infinite; }
+      .ev     { animation: ev 1.8s linear infinite; }
+      .ev2 { animation-delay: .6s } .ev3 { animation-delay: 1.2s }
+
+      @keyframes dash   { to { stroke-dashoffset: -26; } }
+      @keyframes prog   { 0%, 5% { transform: scaleX(0); } 62%, 100% { transform: scaleX(1); } }
+      @keyframes feed   { 0%, 62% { opacity: 1; } 66%, 100% { opacity: 0; } }
+      @keyframes before { 0%, 64% { opacity: 1; } 68%, 100% { opacity: 0; } }
+      @keyframes after  { 0%, 64% { opacity: 0; } 68%, 100% { opacity: 1; } }
+      @keyframes v2box  { 0%, 64% { stroke: #2a3558; } 68%, 100% { stroke: #5eead4; } }
+      @keyframes ev     { from { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } to { transform: translateX(84px); opacity: 0; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .prog, .feed, .before, .after, .v2box, .ev, .flow, .read { animation: none; }
+        .feed, .before { opacity: 0; } .after { opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="380" rx="16" fill="url(#bg)"/>
+  <text x="48" y="56" class="t">Self-versioning projections</text>
+  <text x="48" y="84" class="s">Change a projection and deploy. The new version is rebuilt from the event store in the background, while the current one keeps serving reads.</text>
+
+  <!-- 1. the code change -->
+  <rect x="48" y="118" width="330" height="214" rx="12" fill="#0d1328" stroke="#2a3558"/>
+  <text x="68" y="146" class="lb">YOU CHANGE</text>
+  <text x="68" y="180" class="code">class OrderSummary :</text>
+  <text x="86" y="202" class="code">ProjectionDefinition&lt;…&gt;,</text>
+  <text x="86" y="224" class="code">IEventHandle&lt;OrderPlaced&gt;,</text>
+  <text x="86" y="246" class="code">IEventHandle&lt;OrderShipped&gt;,</text>
+  <text x="70" y="268" class="code add">+ IEventHandle&lt;OrderRefunded&gt;</text>
+  <text x="68" y="306" class="code dim">hash</text>
+  <text x="112" y="306" class="code" style="text-decoration:line-through;fill:#64748b">k3f9a</text>
+  <text x="166" y="306" class="code dim">→</text>
+  <text x="188" y="306" class="code add">p81xq</text>
+  <text x="240" y="306" class="code dim">new version</text>
+
+  <!-- 2. the event store -->
+  <g transform="translate(418 118)">
+    <ellipse cx="80" cy="20" rx="80" ry="16" fill="#152043" stroke="#2a3558" stroke-width="2"/>
+    <path d="M0 20 V194 A80 16 0 0 0 160 194 V20" fill="#111a33" stroke="#2a3558" stroke-width="2"/>
+    <ellipse cx="80" cy="20" rx="80" ry="16" fill="#152043" stroke="#2a3558" stroke-width="2"/>
+    <text x="80" y="64" class="lb" text-anchor="middle">EVENT STORE</text>
+    <g class="chip">
+      <rect x="22" y="82" width="116" height="24" rx="6" fill="#1e1b4b"/><text x="80" y="98" text-anchor="middle">OrderPlaced</text>
+      <rect x="22" y="114" width="116" height="24" rx="6" fill="#1e1b4b"/><text x="80" y="130" text-anchor="middle">OrderShipped</text>
+      <rect x="22" y="146" width="116" height="24" rx="6" fill="#1e1b4b"/><text x="80" y="162" text-anchor="middle">OrderRefunded</text>
+    </g>
+  </g>
+
+  <!-- replay feed into v2 -->
+  <g class="feed">
+    <path class="flow" d="M578 278 H664"/>
+    <circle class="ev" cx="580" cy="278" r="5" fill="#a78bfa"/>
+    <circle class="ev ev2" cx="580" cy="278" r="5" fill="#5eead4"/>
+    <circle class="ev ev3" cx="580" cy="278" r="5" fill="#a78bfa"/>
+    <text x="586" y="266" class="lb">REPLAY</text>
+  </g>
+
+  <!-- 3. versions -->
+  <rect x="664" y="132" width="300" height="78" rx="12" class="box"/>
+  <text x="684" y="164" class="n">OrderSummary · v1</text>
+  <g class="before">
+    <rect x="874" y="148" width="72" height="22" rx="11" fill="#064e3b"/><text x="910" y="163" class="badge" fill="#5eead4" text-anchor="middle">LIVE</text>
+    <text x="684" y="192" class="lb">SERVING READS</text>
+  </g>
+  <g class="after">
+    <rect x="862" y="148" width="84" height="22" rx="11" fill="#1e293b"/><text x="904" y="163" class="badge" fill="#94a3b8" text-anchor="middle">RETIRED</text>
+    <text x="684" y="192" class="lb" style="fill:#64748b">NO LONGER QUERIED</text>
+  </g>
+
+  <rect x="664" y="240" width="300" height="78" rx="12" class="box v2box"/>
+  <text x="684" y="272" class="n">OrderSummary · v2</text>
+  <g class="before">
+    <rect x="852" y="256" width="94" height="22" rx="11" fill="#422006"/><text x="899" y="271" class="badge" fill="#fbbf24" text-anchor="middle">BUILDING</text>
+  </g>
+  <g class="after">
+    <rect x="874" y="256" width="72" height="22" rx="11" fill="#064e3b"/><text x="910" y="271" class="badge" fill="#5eead4" text-anchor="middle">LIVE</text>
+  </g>
+  <rect x="684" y="294" width="260" height="6" rx="3" fill="#1e293b"/>
+  <rect x="684" y="294" width="260" height="6" rx="3" fill="url(#accent)" class="prog"/>
+
+  <!-- 4. reads -->
+  <rect x="1012" y="186" width="140" height="78" rx="12" fill="#0d1328" stroke="#2a3558"/>
+  <text x="1082" y="218" class="n" text-anchor="middle">Your API</text>
+  <text x="1082" y="242" class="lb" text-anchor="middle">QUERIES</text>
+  <path class="read before" d="M1012 214 C990 214 990 171 964 171"/>
+  <path class="read after" d="M1012 236 C990 236 990 279 964 279"/>
+</svg>

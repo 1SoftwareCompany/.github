@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="606" viewBox="0 0 1200 606" role="img" aria-label="Built for production: multitenancy, replay, stream integrity, ops API, event store migrations, auto-updates">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#151d38"/>
+      <stop offset="1" stop-color="#0b1124"/>
+    </linearGradient>
+    <style>
+      .h   { font: 700 19px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #f8fafc; }
+      .p   { font: 400 14px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #a5b4fc; }
+      .m   { font: 600 11px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #94a3b8; }
+      .mb  { font: 700 12px ui-monospace, 'Cascadia Code', Consolas, Menlo, monospace; fill: #e0e7ff; }
+      .tile { fill: url(#card); stroke: #2a3558; }
+      .stage { fill: #0a0f1f; stroke: #1e293b; }
+      .rail { stroke: #1e293b; stroke-width: 2; }
+
+      /* 1 multitenancy */
+      .run  { animation: run 2.4s linear infinite; }
+      .r2 { animation-delay: .8s } .r3 { animation-delay: 1.6s }
+      .wipe { animation: wipe 6s infinite; }
+      .wiped { opacity: 0; animation: wiped 6s infinite; }
+      @keyframes run { from { transform: translateX(0); opacity: 0; } 10%, 85% { opacity: 1; } to { transform: translateX(196px); opacity: 0; } }
+      @keyframes wipe { 0%, 55% { opacity: 1; } 62%, 88% { opacity: .12; } 96%, 100% { opacity: 1; } }
+      @keyframes wiped { 0%, 58% { opacity: 0; } 64%, 86% { opacity: 1; } 92%, 100% { opacity: 0; } }
+
+      /* 2 replay */
+      .chip { animation: chip 3s infinite; fill: #1e1b4b; }
+      .c2 { animation-delay: .3s } .c3 { animation-delay: .6s } .c4 { animation-delay: .9s } .c5 { animation-delay: 1.2s }
+      .hit { animation: hit 3s infinite; animation-delay: 1.4s; }
+      .flow { fill: none; stroke: url(#accent); stroke-width: 2; stroke-dasharray: 4 7; animation: dash 1.2s linear infinite; }
+      .pub { animation: pub 3s linear infinite; }
+      @keyframes chip { 0%, 100% { fill: #1e1b4b; } 8%, 16% { fill: #5eead4; } 30% { fill: #1e1b4b; } }
+      @keyframes hit { 0%, 100% { stroke: #2a3558; } 6%, 18% { stroke: #5eead4; } 30% { stroke: #2a3558; } }
+      @keyframes pub { from { transform: translateX(0); opacity: 0; } 10%, 85% { opacity: 1; } to { transform: translateX(150px); opacity: 0; } }
+      @keyframes dash { to { stroke-dashoffset: -22; } }
+
+      /* 3 integrity */
+      .scan { animation: scan 6s ease-in-out infinite; }
+      .ok   { opacity: 0; animation: ok 6s infinite; }
+      .o2 { animation-delay: .5s } .o3 { animation-delay: 1s } .o5 { animation-delay: 2s }
+      .bad  { animation: bad 6s infinite; }
+      .badtxt { opacity: 0; animation: badtxt 6s infinite; }
+      @keyframes scan { 0% { transform: translateX(0); opacity: 0; } 5% { opacity: 1; } 45% { transform: translateX(300px); opacity: 1; } 50%, 100% { transform: translateX(300px); opacity: 0; } }
+      @keyframes ok { 0%, 8% { opacity: 0; } 12%, 90% { opacity: 1; } 96%, 100% { opacity: 0; } }
+      @keyframes bad { 0%, 30% { stroke: #475569; fill: transparent; } 34%, 90% { stroke: #f87171; fill: #450a0a; } 96%, 100% { stroke: #475569; fill: transparent; } }
+      @keyframes badtxt { 0%, 32% { opacity: 0; } 36%, 90% { opacity: 1; } 96%, 100% { opacity: 0; } }
+
+      /* 4 ops api */
+      .ln { opacity: 0; animation: ln 7.5s infinite; }
+      .l2 { animation-delay: 1s } .l3 { animation-delay: 2s } .l4 { animation-delay: 3s } .l5 { animation-delay: 4s } .l6 { animation-delay: 5s }
+      .cursor { animation: blink 1s steps(1) infinite; }
+      @keyframes ln { 0% { opacity: 0; } 3%, 80% { opacity: 1; } 88%, 100% { opacity: 0; } }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      /* 5 migrations */
+      .mig { animation: mig 2.7s ease-in-out infinite; }
+      .g2 { animation-delay: .9s } .g3 { animation-delay: 1.8s }
+      .gear { transform-box: fill-box; transform-origin: center; animation: spin 4s linear infinite; }
+      @keyframes mig { from { transform: translateX(0); fill: #5eead4; opacity: 0; } 10% { opacity: 1; } 45% { fill: #5eead4; } 55% { fill: #a78bfa; } 90% { opacity: 1; } to { transform: translateX(146px); fill: #a78bfa; opacity: 0; } }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      /* 6 auto-updates */
+      .vold { animation: vold 6s infinite; }
+      .vnew { opacity: 0; animation: vnew 6s infinite; }
+      .tick { opacity: 0; animation: tick 6s infinite; }
+      .t2 { animation-delay: .5s } .t3 { animation-delay: 1s }
+      @keyframes vold { 0%, 25% { opacity: 1; } 30%, 92% { opacity: 0; } 97%, 100% { opacity: 1; } }
+      @keyframes vnew { 0%, 25% { opacity: 0; } 30%, 92% { opacity: 1; } 97%, 100% { opacity: 0; } }
+      @keyframes tick { 0%, 38% { opacity: 0; } 42%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; }
+        .ok, .badtxt, .ln, .vnew, .tick, .wiped { opacity: 1; }
+        .vold { opacity: 0; }
+      }
+    </style>
+  </defs>
+
+  <!-- ============ 1. MULTITENANT ============ -->
+  <g transform="translate(1 1)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <text x="40" y="58" class="mb">acme</text>
+    <text x="40" y="98" class="mb">globex</text>
+    <g class="wipe"><text x="40" y="138" class="mb">initech</text></g>
+    <line class="rail" x1="110" y1="54" x2="310" y2="54"/>
+    <line class="rail" x1="110" y1="94" x2="310" y2="94"/>
+    <line class="rail" x1="110" y1="134" x2="310" y2="134"/>
+    <circle class="run" cx="112" cy="54" r="5" fill="#5eead4"/>
+    <circle class="run r2" cx="112" cy="94" r="5" fill="#a78bfa"/>
+    <g class="wipe"><circle class="run r3" cx="112" cy="134" r="5" fill="#fbbf24"/></g>
+    <rect x="316" y="42" width="30" height="24" rx="5" fill="#13213a" stroke="#5eead4"/>
+    <rect x="316" y="82" width="30" height="24" rx="5" fill="#1e1b4b" stroke="#a78bfa"/>
+    <g class="wipe"><rect x="316" y="122" width="30" height="24" rx="5" fill="#422006" stroke="#fbbf24"/></g>
+    <g class="wiped">
+      <rect x="170" y="122" width="96" height="24" rx="12" fill="#450a0a" stroke="#f87171"/>
+      <text x="218" y="138" class="m" style="fill:#fca5a5" text-anchor="middle">WIPED</text>
+    </g>
+    <text x="22" y="212" class="h">Multitenant by design</text>
+    <text x="22" y="242" class="p">The tenant is in every ID and message context.</text>
+    <text x="22" y="263" class="p">Wipe a tenant's data with a single call.</text>
+  </g>
+
+  <!-- ============ 2. REPLAY ============ -->
+  <g transform="translate(409 1)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <text x="40" y="44" class="m">EVENTS</text>
+    <rect class="chip" x="40" y="54" width="30" height="24" rx="5"/>
+    <rect class="chip c2" x="78" y="54" width="30" height="24" rx="5"/>
+    <rect class="chip c3" x="116" y="54" width="30" height="24" rx="5"/>
+    <rect class="chip c4" x="154" y="54" width="30" height="24" rx="5"/>
+    <rect class="chip c5" x="192" y="54" width="30" height="24" rx="5"/>
+    <path class="flow" d="M228 66 H252"/>
+    <rect class="hit" x="254" y="48" width="92" height="36" rx="8" fill="#111a33" stroke="#2a3558" stroke-width="2"/>
+    <text x="300" y="70" class="mb" text-anchor="middle">Projection</text>
+    <text x="40" y="118" class="m">PUBLIC EVENT</text>
+    <line class="rail" x1="40" y1="140" x2="230" y2="140"/>
+    <circle class="pub" cx="42" cy="140" r="6" fill="#a78bfa"/>
+    <rect x="254" y="104" width="92" height="26" rx="8" fill="#111a33" stroke="#2a3558"/>
+    <text x="300" y="121" class="m" text-anchor="middle">billing</text>
+    <rect x="254" y="136" width="92" height="26" rx="8" fill="#111a33" stroke="#2a3558"/>
+    <text x="300" y="153" class="m" text-anchor="middle">shipping</text>
+    <path class="flow" d="M200 140 C226 140 230 117 252 117"/>
+    <path class="flow" d="M200 140 C226 140 230 149 252 149"/>
+    <text x="22" y="212" class="h">Replay anything</text>
+    <text x="22" y="242" class="p">Replay events into projections, or republish</text>
+    <text x="22" y="263" class="p">public events to other bounded contexts.</text>
+  </g>
+
+  <!-- ============ 3. STREAM INTEGRITY ============ -->
+  <g transform="translate(817 1)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <text x="40" y="44" class="m">AGGREGATE STREAM</text>
+    <g>
+      <rect x="40" y="62" width="50" height="34" rx="6" fill="#1e1b4b" stroke="#2a3558"/><text x="65" y="84" class="mb" text-anchor="middle">r1</text>
+      <rect x="102" y="62" width="50" height="34" rx="6" fill="#1e1b4b" stroke="#2a3558"/><text x="127" y="84" class="mb" text-anchor="middle">r2</text>
+      <rect x="164" y="62" width="50" height="34" rx="6" fill="#1e1b4b" stroke="#2a3558"/><text x="189" y="84" class="mb" text-anchor="middle">r3</text>
+      <rect class="bad" x="226" y="62" width="50" height="34" rx="6" stroke-dasharray="4 4" stroke-width="1.5"/><text x="251" y="84" class="mb" text-anchor="middle" style="fill:#94a3b8">r4</text>
+      <rect x="288" y="62" width="50" height="34" rx="6" fill="#1e1b4b" stroke="#2a3558"/><text x="313" y="84" class="mb" text-anchor="middle">r5</text>
+    </g>
+    <g class="mb" style="fill:#5eead4" text-anchor="middle">
+      <text class="ok" x="65" y="120">✓</text>
+      <text class="ok o2" x="127" y="120">✓</text>
+      <text class="ok o3" x="189" y="120">✓</text>
+      <text class="ok o5" x="313" y="120">✓</text>
+    </g>
+    <text class="badtxt m" x="251" y="120" text-anchor="middle" style="fill:#f87171">MISSING</text>
+    <g class="badtxt">
+      <rect x="40" y="134" width="298" height="24" rx="12" fill="#450a0a"/>
+      <text x="189" y="150" class="m" text-anchor="middle" style="fill:#fca5a5">integrity violation detected on load</text>
+    </g>
+    <rect class="scan" x="34" y="56" width="3" height="46" rx="1.5" fill="url(#accent)"/>
+    <text x="22" y="212" class="h">Event stream integrity</text>
+    <text x="22" y="242" class="p">Every stream is validated on load for missing,</text>
+    <text x="22" y="263" class="p">duplicate and out-of-order revisions.</text>
+  </g>
+
+  <!-- ============ 4. OPS API ============ -->
+  <g transform="translate(1 315)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <circle cx="38" cy="36" r="4" fill="#f87171"/><circle cx="52" cy="36" r="4" fill="#fbbf24"/><circle cx="66" cy="36" r="4" fill="#34d399"/>
+    <text x="342" y="40" class="m" text-anchor="end">1nception.Api</text>
+    <text class="ln mb" x="36" y="68"><tspan fill="#5eead4">GET </tspan> /EventStore/Explore</text>
+    <text class="ln l2 m" x="346" y="68" text-anchor="end">200 · 42 events</text>
+    <text class="ln l3 mb" x="36" y="100"><tspan fill="#a78bfa">POST</tspan> /Projection/Rebuild</text>
+    <text class="ln l4 m" x="346" y="100" text-anchor="end" style="fill:#fbbf24">v2 building</text>
+    <text class="ln l5 mb" x="36" y="132"><tspan fill="#a78bfa">POST</tspan> /Projection/Pause</text>
+    <text class="ln l6 m" x="346" y="132" text-anchor="end">paused</text>
+    <rect class="cursor" x="36" y="148" width="8" height="14" fill="#5eead4"/>
+    <text x="22" y="212" class="h">Ops API included</text>
+    <text x="22" y="242" class="p">Explore aggregates and events, rebuild, pause</text>
+    <text x="22" y="263" class="p">or cancel projection versions over HTTP.</text>
+  </g>
+
+  <!-- ============ 5. MIGRATIONS ============ -->
+  <g transform="translate(409 315)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <g transform="translate(40 50)">
+      <ellipse cx="34" cy="10" rx="34" ry="9" fill="#13213a" stroke="#5eead4" stroke-width="1.5"/>
+      <path d="M0 10 V80 A34 9 0 0 0 68 80 V10" fill="#0f172a" stroke="#5eead4" stroke-width="1.5"/>
+      <ellipse cx="34" cy="10" rx="34" ry="9" fill="#13213a" stroke="#5eead4" stroke-width="1.5"/>
+      <text x="34" y="54" class="m" text-anchor="middle">old</text>
+    </g>
+    <g transform="translate(274 50)">
+      <ellipse cx="34" cy="10" rx="34" ry="9" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.5"/>
+      <path d="M0 10 V80 A34 9 0 0 0 68 80 V10" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+      <ellipse cx="34" cy="10" rx="34" ry="9" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="34" y="54" class="m" text-anchor="middle">new</text>
+    </g>
+    <line class="rail" x1="112" y1="100" x2="270" y2="100"/>
+    <circle cx="191" cy="100" r="16" fill="#0a0f1f" stroke="#2a3558" stroke-width="2"/>
+    <circle class="gear" cx="191" cy="100" r="10" fill="none" stroke="url(#accent)" stroke-width="3" stroke-dasharray="4 3"/>
+    <text x="191" y="140" class="m" text-anchor="middle">transform</text>
+    <rect class="mig" x="112" y="94" width="16" height="12" rx="3"/>
+    <rect class="mig g2" x="112" y="94" width="16" height="12" rx="3"/>
+    <rect class="mig g3" x="112" y="94" width="16" height="12" rx="3"/>
+    <text x="22" y="212" class="h">Event store migrations</text>
+    <text x="22" y="242" class="p">Copy and transform the event store into new</text>
+    <text x="22" y="263" class="p">storage with migration handlers.</text>
+  </g>
+
+  <!-- ============ 6. AUTO-UPDATES ============ -->
+  <g transform="translate(817 315)">
+    <rect class="tile" width="382" height="290" rx="16"/>
+    <rect class="stage" x="20" y="20" width="342" height="150" rx="10"/>
+    <text x="40" y="44" class="m">SOURCE GENERATOR</text>
+    <g transform="translate(40 60)">
+      <rect width="100" height="44" rx="10" fill="#111a33" stroke="url(#accent)" stroke-width="2"/>
+      <text class="vold" x="50" y="28" text-anchor="middle" style="font:700 18px ui-monospace,Consolas,monospace;fill:#94a3b8">v12</text>
+      <text class="vnew" x="50" y="28" text-anchor="middle" style="font:700 18px ui-monospace,Consolas,monospace;fill:#5eead4">v13</text>
+    </g>
+    <path class="flow" d="M146 82 H176"/>
+    <g class="mb">
+      <text x="186" y="64">acme</text>
+      <text x="186" y="94">globex</text>
+      <text x="186" y="124">initech</text>
+    </g>
+    <g class="m" style="fill:#5eead4">
+      <text class="tick" x="262" y="64">✓ applied</text>
+      <text class="tick t2" x="262" y="94">✓ applied</text>
+      <text class="tick t3" x="262" y="124">✓ applied</text>
+    </g>
+    <text x="40" y="150" class="m">per tenant · tracked</text>
+    <text x="22" y="212" class="h">Auto-updates</text>
+    <text x="22" y="242" class="p">A source generator wires up upgrades between</text>
+    <text x="22" y="263" class="p">major versions, applied per tenant.</text>
+  </g>
+</svg>
